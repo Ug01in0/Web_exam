@@ -1,0 +1,20 @@
+﻿services:
+  vulnerable:
+    build: ./vulnerable
+    container_name: spa-lab-vulnerable
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - JWT_SECRET=insecure-jwt-secret-for-lab
+    restart: unless-stopped
+
+  fixed:
+    build: ./fixed
+    container_name: spa-lab-fixed
+    ports:
+      - "3001:3000"
+    environment:
+      - PORT=3000
+      - JWT_SECRET=insecure-jwt-secret-for-lab
+    restart: unless-stopped
